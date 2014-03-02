@@ -43,14 +43,18 @@ module.exports = function(grunt) {
             },
             files: [ 'Gruntfile.js', 'js/steps.js' ]
         },
+        clean: ['build/steps.min.js', 'steps.min.css']
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'cssmin']);
     grunt.registerTask('test', 'jshint');
+    grunt.registerTask('lint', 'jshint');
+    grunt.registerTask('buildall', ['clean', 'jshint', 'uglify', 'cssmin']);
 
 };
