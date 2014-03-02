@@ -35,9 +35,9 @@ var Steps = (function Closure() {
     }
     /* Calculate Width Based on Width specified */
     function GetBoxWidth() {
-        if(box_width_type == 1) {
+        if(box_width_type === 1) {
             return BOX_WIDTH;
-        } else if(box_width_type == 2) {
+        } else if(box_width_type === 2) {
 
         } else {
              return BOX_WIDTH * 0.01 * $(window).width();
@@ -143,10 +143,10 @@ var Steps = (function Closure() {
         } else {
             console.warn("Improper Width sent");
         }
-        if(type != 0) {
+        if(type !== 0) {
             box_width_type = type;
             var arr = num_pat.exec(width);
-            BOX_WIDTH = parseInt(arr[0]);
+            BOX_WIDTH = parseInt(arr[0], 10);
             console.log("width: " + BOX_WIDTH);
             UpdateBoxWidth();
         }

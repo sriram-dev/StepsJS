@@ -10,10 +10,17 @@ Setting up environment
     * Fork the Repo
 
     * npm install - to install dependencies)
-
-    * grunt package
+    
 
 Build
 ---------
-    * grunt build
+    * grunt buildall - clean + jshint + build
 
+    * grunt clean - clean build/* files
+
+    * grunt lint - checks the files for lint errors
+
+Usage
+--------
+
+Please check examples/ folder for practical usage examples
