@@ -90,7 +90,7 @@ function addMenu(stepVar) {
     var numTitle = Step.numTitle;
     var numDesc  = Step.numDesc;
     var container= Step.container;
-    var height = $(window).height() * 0.15;
+    var height = Math.min(100, $(window).height() * 0.15);
     console.log("width: " + width + "height" + height);
     var menuDiv = $("<div></div>").width(width).height(height).addClass("steps_menu").attr("id", "steps_menu");
     $(container).addClass("main_container");
