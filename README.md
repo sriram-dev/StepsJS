@@ -3,6 +3,7 @@ StepsJS
 
 StepsJS is a Javascript Library which can be used to describe Steps to do something/explaing something in a intuitive way.
 
+http://sriram-dev.github.io/StepsJS/
 
 Setting up environment
 ---------
