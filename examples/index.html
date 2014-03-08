@@ -8,8 +8,9 @@
         <script type="text/javascript" src="../js/jquery.tooltipster.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			Steps.Init("#applySteps");
-                        Steps.SetWidth("80%");
+			var step1 = new Steps("#applySteps");
+            step1.setWidth("80%");
+            step1.applySteps();
 		});
 	</script>
 </head>

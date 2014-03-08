@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     // Project configuration.
-    grunt.initConfig({ 
+    grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             options: {
@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                 expr: true,
                 jquery: true,
                 loopfunc: true,
+                trailing: true,
                 globals: {
                     head: false,
                     module: false,
