@@ -26,7 +26,8 @@ Usage
 
     * Include Both steps.js/steps.min.js and steps.css/steps.min.css file in your html page.
     
-    * Include your steps in a HTML Div Element, With each of the Steps Heading and Steps Descriptions in separate Divs with Class "steps_title" and "steps_desc" respectively. 
+    * Include your steps in a HTML Div Element, With each of the Steps Heading and Steps Descriptions 
+    in separate Divs with Class "steps_title" and "steps_desc" respectively. 
     
     * Create an instance of the steps and provide the id of the Main div element which contains the Steps in script. 
           var stepInstance = new Steps("#container");
