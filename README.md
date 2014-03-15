@@ -8,9 +8,9 @@ http://sriram-dev.github.io/StepsJS/
 Setting up environment
 ---------
 
-    * Fork the Repo
+    * Clone the Repo
 
-    * npm install - to install dependencies)
+    * npm install - to install dependencies
     
 
 Build
@@ -24,4 +24,12 @@ Build
 Usage
 --------
 
-Please check examples/ folder for practical usage examples
+    * Include Both steps.js/steps.min.js and steps.css/steps.min.css file in your html page.
+    
+    * Include your steps in a HTML Div Element, With each of the Steps Heading and Steps Descriptions in separate Divs with Class "steps_title" and "steps_desc" respectively. 
+    
+    * Create an instance of the steps and provide the id of the Main div element which contains the Steps in script. 
+          var stepInstance = new Steps("#container");
+          stepInstance.applySteps();
+    
+    * Refer examples/ folder for practical usage examples.
