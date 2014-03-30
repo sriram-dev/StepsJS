@@ -59,14 +59,17 @@ steps.css
      background: #FFFFE0;
      font-family: sans-serif;
      font-size: 1.2em;
-
-     overflow:scroll;
+     border-radius: 25px;
      width:80%;
-     height:800px;
+     height: 80%;
      left:0;
      right:0;
      padding-left:3%;
+     overflow-y: hidden;
      margin: auto;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
 
 .steps_title {
@@ -75,12 +78,65 @@ steps.css
      font-size: 2em;
      left:0;
      right:0;
+     top:5%;
      margin: auto;
-     top:10px;
 }
 
 .steps_desc {
      position: relative;
-     padding: 5px;
-     top:10px;
+     top: 5%;
+}
+
+.steps_menu {
+     top:5%;
+     margin-left: auto;
+     margin-right: auto;
+     padding-left: 1%;
+}
+
+.scrollbar{
+     margin-top:40px;
+     overflow:hidden;
+}
+
+.scrollbar:hover {
+     overflow:auto;
+}
+
+/*
+.main_container::-webkit-scrollbar{
+     width:16px;
+     background-color:#cccccc;
+}
+
+.main_container::-webkit-scrollbar-thumb{
+background-color:#B03C3F;
+border-radius:10px;
+}
+
+.main_container::-webkit-scrollbar-thumb:hover{
+background-color:#BF4649;
+border:1px solid #333333;
+}
+
+.main_container::-webkit-scrollbar-thumb:active{
+background-color:#A6393D;
+border:1px solid #333333;
+} 
+*/
+/*Scroll bar */
+
+.main_container::-webkit-scrollbar {
+    width: 1em;
+    margin-left: 5%;
+    overflow: hidden;
+}
+ 
+.main_container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+.main_container::-webkit-scrollbar-thumb {
+  background-color: lightgrey;
+  outline: 1px solid white;
 }
