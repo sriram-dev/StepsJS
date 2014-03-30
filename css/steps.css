@@ -96,9 +96,7 @@ steps.css
 
 .scrollbar{
      margin-top:40px;
-     margin-left:40px;
      overflow:hidden;
-     float:left;
 }
 
 .scrollbar:hover {
