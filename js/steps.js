@@ -8,11 +8,15 @@ function Steps(container) {
 	this.numSteps = 0;
 	this.numTitle = 0;
 	this.numDesc = 0;
+    
     this.box_width = 90;
+    this.box_width_type = 2; //1-px 2-percent(default) 
+    this.box_height = 80;
+    this.box_height_type = 0;
+    
     this.stepWidth = 0;
     this.stepHeight = 0;
-    this.box_width_type = 2; //1-px 2-percent(default)
-    console.log("cont width in main func: " + $(container).children(".steps_desc").length);
+  
 }
 
 
@@ -35,11 +39,15 @@ function hideAllSteps(container) {
 }
 
 /* Calculate Width Based on Width specified */
-function CalculateBoxWidth(box_width, box_width_type) {
+function CalculateBoxWidth(box_width, box_width_type, element, type) {
     if(box_width_type === 1) {
         return box_width;
     } else if(box_width_type === 2) {
-        return box_width * 0.01 * $(window).width();
+        if(type === 0) {
+            return box_width * 0.01 * $(element).width();
+        } else {
+            return box_width * 0.01 * $(element).height();
+        }
     }
 }
 
@@ -85,13 +93,12 @@ function getParamType(num) {
 function addMenu(stepVar) {
     // Get the required vars from step
     var Step = stepVar;
-    var width = CalculateBoxWidth(Step.box_width, Step.box_width_type);
+    var width = CalculateBoxWidth(Step.box_width, Step.box_width_type, Step.container, 0);
     var numSteps = Step.numSteps;
     var numTitle = Step.numTitle;
     var numDesc  = Step.numDesc;
     var container= Step.container;
-    var height = Math.min(80, $(window).height() * 0.15);
-    console.log("width: " + width + "height" + height);
+    var height = Math.min(80, $(window).height() * 0.15);   
     var menuDiv = $("<div></div>").width(width).height(height).addClass("steps_menu").attr("id", "steps_menu");
     $(container).addClass("main_container");
     $(container).addClass("scrollbar");
@@ -110,10 +117,8 @@ function addMenu(stepVar) {
         }
        $("<h2>"+(i+1)+"</h2>").addClass("menu_name").appendTo(step);
         var nthTitle = getNthStepTitle($(step).text());
-        $(step).addClass('tooltip');
         $(step).attr("title", $(nthTitle).text());
         step.on('click', function(e) {
-            console.log("text:" + $(this).text());
             var nthTitle = getNthStepTitle(container, $(this).text());
             var nthDesc = getNthStepDesc(container, $(this).text());
             hideAllSteps(container);
@@ -140,8 +145,7 @@ function addMenu(stepVar) {
 Steps.prototype.applySteps = function applySteps() {
     this.numTitle = getNumTitle(this.container);
     this.numDesc  = getNumDesc(this.container);
-    this.numSteps = Math.max(this.numTitle, this.numDesc);
-    console.log("numtitle: " + this.numTitle + " numsteps: " + this.numSteps);
+    this.numSteps = Math.max(this.numTitle, this.numDesc);   
     addMenu(this);
 };
 
@@ -155,15 +159,17 @@ Steps.prototype.getBoxWidthType = function getBoxWidthType() {
 
 /* Update the Box Width when modified later */
 Steps.prototype.updateBoxWidth = function updateBoxWidth() {
-    var width = CalculateBoxWidth(this.box_width, this.box_width_type);
-    console.log("Box width is : "+ width);
-    // Update element with class steps_menu and container element
-    // width of each of the steps need to be modified (elements with class menu_circle)
-    var stepwidth = width/this.numSteps - 30;
+    var width = CalculateBoxWidth(this.box_width, this.box_width_type, this.container, 0);
+    var stepwidth = 0.75 * width/this.numSteps;
     $(this.container).css("width", width);
-    $(this.container).children(".menu_circle").css("width", stepwidth);
+    $(".menu_circle").css("width", stepwidth);
     $(this.container).children(".steps_menu").css("width", width);
 };
+
+Steps.prototype.updateBoxHeight = function updateBoxHeight() {
+    var height = CalculateBoxWidth(this.box_height, this.box_height_type, this.container, 1);
+    $(this.container).css("height", height);
+}
 
 /* TODO
 1) Adding Back layer
@@ -183,7 +189,17 @@ Steps.prototype.setWidth = function setWidth(width) {
         this.box_width_type = type;
         var arr = num_pat.exec(width);
         this.box_width = parseInt(arr[0], 10);
-        console.log("width in setWidth: " + this.box_width);
         this.updateBoxWidth();
     }
 };
+
+Steps.prototype.setHeight = function SetHeight(height) {
+    var type = getParamType(height);
+    var num_pat = /[0-9]+/g;
+    if(type != 0) {
+        this.box_height_type = type;
+        var arr = num_pat.exec(height);
+        this.box_height =  parseInt(arr[0], 10);
+        this.updateBoxHeight();
+    }
+}
