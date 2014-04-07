@@ -5,26 +5,13 @@ StepsJS is a Javascript Library which can be used to describe Steps to do someth
 
 http://sriram-dev.github.io/StepsJS/
 
-Setting up environment
----------
-
-    * Clone the Repo
-
-    * npm install - to install dependencies
-    
-
-Build
----------
-    * grunt buildall - clean + jshint + build
-
-    * grunt clean - clean build/* files
-
-    * grunt lint - checks the files for lint errors
-
 Usage
 --------
 
-    * Include Both steps.js/steps.min.js and steps.css/steps.min.css file in your html page.
+    * Include Both steps.js and steps.css files in your html page.
+    
+         <script type="text/javascript" src="steps.js"></script>
+	      <link rel="stylesheet" type="text/css" href="steps.css">
     
     * Include your steps in a HTML Div Element, With each of the Steps Heading and Steps Descriptions 
     in separate Divs with Class "steps_title" and "steps_desc" respectively. 
@@ -33,4 +20,17 @@ Usage
           var stepInstance = new Steps("#container");
           stepInstance.applySteps();
     
-    * Refer examples/ folder for practical usage examples.
+API: 
+---------
+    
+    setWidth - sets the width of the step div. All steps inside that div would also have its properties modified
+    
+    stepInstance.setWidth("50%");
+    (or)
+    stepInstance.setWidth("500px");
+    
+    setHeight - sets the height of the step container
+    
+    stepInstance.setHeight("80%");
+    (or)
+    stepInstance.setHeight("800px");
