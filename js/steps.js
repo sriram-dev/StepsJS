@@ -44,9 +44,9 @@ function CalculateBoxWidth(box_width, box_width_type, element, type) {
         return box_width;
     } else if(box_width_type === 2) {
         if(type === 0) {
-            return box_width * 0.01 * $(window).width();
+            return box_width * 0.01 * $(element).parent().width();
         } else {
-            return box_width * 0.01 * $(window).height();
+            return box_width * 0.01 * $(element).parent().height();
         }
     }
 }
